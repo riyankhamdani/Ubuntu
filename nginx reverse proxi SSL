@@ -1,0 +1,21 @@
+server {
+    listen 80;
+    server_name nothinux.id;
+    return 301 $scheme:https://nothinux.id$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    server_name nothinux.id;
+
+    ssl_certificate     /etc/nginx/nothinux-ssl/fullchain.pem;
+    ssl_certificate_key /etc/nginx/nothinux-ssl/privkey.pem;
+
+    location / {
+        proxy_pass http://127.0.0.1:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "Upgrade";
+        proxy_set_header Host $host;
+    }
+}
