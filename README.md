@@ -1,10 +1,9 @@
 === Membuat Aplikasi Node.js ===
-
 Untuk aplikasi Node.js, kita akan membangun server Node.js dengan modul HTTP yang disediakan oleh Node.js. Mari kita mulai dengan menginisialisasi proyek Node.js
 const http = require("http");
 
 const server = http.createServer((req, res) => {
-  const urlPath = req.url;
+const urlPath = req.url;
   if (urlPath === "/overview") {
     res.end('Welcome to the "Technical Test" of DevOps');
   } else if (urlPath === "/api") {
